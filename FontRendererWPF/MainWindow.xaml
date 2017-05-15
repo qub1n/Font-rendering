@@ -1,0 +1,15 @@
+﻿<Window x:Class="FontRendererWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:FontRendererWPF"
+        Title="Font Rasterization" Height="350" Width="525">
+    <Grid>
+        <Label Content="Text" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.219,0.5"/>
+        <TextBox x:Name="textboxText" Margin="76,10,0,0" TextWrapping="Wrap" Text="AaBbCcDdEeFfGg?Příliš žluťoučký kůň úpěl ďábelské ódy." VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="35,44,0,0" TextWrapping="Wrap" Text="Font" VerticalAlignment="Top" RenderTransformOrigin="1.11,1.692"/>
+        <Button x:Name="buttonChangeFont" Content="Change Font" HorizontalAlignment="Left" Margin="90,41,0,0" VerticalAlignment="Top" Width="74" Click="buttonChangeFont_Click"/>
+
+        <controls:ImageCanvas x:Name="canvas" Margin="10,83,7,5" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}"/>
+
+    </Grid>
+</Window>
