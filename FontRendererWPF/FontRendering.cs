@@ -69,6 +69,9 @@ namespace FontRendererWPF
 
         public static void SaveToFile(string filePath, DrawingImage drawing)
         {
+            if (drawing.Width <= 1 || drawing.Height < 1)
+                return;
+
             var image = new Image { Source = drawing };
             image.Arrange(new Rect(new Size(drawing.Width, drawing.Height)));
 

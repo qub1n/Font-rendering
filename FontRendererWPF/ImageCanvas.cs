@@ -21,6 +21,9 @@ namespace FontRendererWPF
         {
             Zoom = 1;
             this.VisualEdgeMode = EdgeMode.Aliased;
+
+            RenderOptions.SetEdgeMode(this, EdgeMode.Aliased);
+            RenderOptions.SetBitmapScalingMode(this, BitmapScalingMode.NearestNeighbor);
         }
 
         public ImageSource Source
@@ -45,12 +48,11 @@ namespace FontRendererWPF
             dc.PushTransform(scaleTransform);
 
             RenderOptions.SetEdgeMode(_source, EdgeMode.Unspecified);
-            RenderOptions.SetBitmapScalingMode(_source, BitmapScalingMode.NearestNeighbor);
-
-            //    RenderOptions.SetEdgeMode(bm, EdgeMode.Unspecified);
-            //    RenderOptions.SetBitmapScalingMode(bm, BitmapScalingMode.Linear);
+            RenderOptions.SetBitmapScalingMode(_source, BitmapScalingMode.NearestNeighbor);            
 
             dc.DrawImage(_source, new Rect(0, 0, _source.Width, _source.Height));
+
+            dc.Pop();
         }
     }
 }
