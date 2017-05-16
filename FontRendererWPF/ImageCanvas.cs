@@ -15,6 +15,14 @@ namespace FontRendererWPF
     {       
         ImageSource _source;
 
+        public int Zoom { get; set; }
+
+        public ImageCanvas()
+        {
+            Zoom = 1;
+            this.VisualEdgeMode = EdgeMode.Aliased;
+        }
+
         public ImageSource Source
         {
             get { return _source; }
@@ -29,6 +37,19 @@ namespace FontRendererWPF
         {
             if (_source == null)
                 return;
+
+            ScaleTransform scaleTransform = new ScaleTransform();
+            scaleTransform.ScaleX = Zoom;
+            scaleTransform.ScaleY = Zoom;            
+
+            dc.PushTransform(scaleTransform);
+
+            RenderOptions.SetEdgeMode(_source, EdgeMode.Unspecified);
+            RenderOptions.SetBitmapScalingMode(_source, BitmapScalingMode.NearestNeighbor);
+
+            //    RenderOptions.SetEdgeMode(bm, EdgeMode.Unspecified);
+            //    RenderOptions.SetBitmapScalingMode(bm, BitmapScalingMode.Linear);
+
             dc.DrawImage(_source, new Rect(0, 0, _source.Width, _source.Height));
         }
     }

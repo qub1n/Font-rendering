@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.IO;
+using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using WpfColorFontDialog;
 
 namespace FontRendererWPF
@@ -11,11 +14,13 @@ namespace FontRendererWPF
     {
         FontInfo font;
         string imagePath = "image.png";
+        double fontSize = 14;
 
         public MainWindow()
         {
             InitializeComponent();
-            
+
+            canvasBig.Zoom = 10;
         }
 
         private void buttonChangeFont_Click(object sender, RoutedEventArgs e)
@@ -30,10 +35,8 @@ namespace FontRendererWPF
             if (result == true)
             {
                 font = dialog.Font;
-
-                
-
-                LoadFont(Convert(font), font.Size, textboxText.Text);
+                fontSize = font.Size;
+                RefreshFont();
             }
         }
 
@@ -44,17 +47,37 @@ namespace FontRendererWPF
             return new Typeface(family, familyTypeface.Style, familyTypeface.Weight, familyTypeface.Stretch);
         }
 
-        private void LoadFont(Typeface typeface, double fontSize, string text)
+        private void RefreshFont()
         {
-            //var bitmap = FontRendering.RenderBitMap(9, typeface, fontSize, text);
-            var image = FontRendering.CreateImage(9, typeface, fontSize, text);
+            if (font == null)
+                return;
 
-            canvas.Source = image;
-
-            //FontRendering.SaveImageToFile(imagePath, bitmap);            
-            FontRendering.SaveToFile(imagePath, image);
+            RefreshFont(Convert(font), fontSize, textboxText.Text);
         }
-        
-        
+
+        private void RefreshFont(Typeface typeface, double fontSize, string text)
+        {
+            DrawingImage image = FontRendering.CreateImage(9, typeface, fontSize, text);
+
+            canvasNormal.Source = image;
+                       
+            FontRendering.SaveToFile(imagePath, image);
+
+            var bitmap = new BitmapImage();
+            using (var stream = File.OpenRead(imagePath))
+            {
+                bitmap.BeginInit();
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.StreamSource = stream;
+                bitmap.EndInit();
+
+                canvasBig.Source = bitmap;
+            };
+        }
+
+        private void textboxText_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            RefreshFont();
+        }
     }
 }
