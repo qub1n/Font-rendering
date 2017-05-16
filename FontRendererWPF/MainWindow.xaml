@@ -9,7 +9,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="35,44,0,0" TextWrapping="Wrap" Text="Font" VerticalAlignment="Top" RenderTransformOrigin="1.11,1.692"/>
         <Button x:Name="buttonChangeFont" Content="Change Font" HorizontalAlignment="Left" Margin="90,41,0,0" VerticalAlignment="Top" Width="74" Click="buttonChangeFont_Click"/>
 
-        <controls:ImageCanvas x:Name="canvas" Margin="10,83,7,5" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}"/>
+        <controls:ImageCanvas x:Name="canvas" TextOptions.TextRenderingMode="Aliased" Margin="10,83,7,5" Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}"/>
 
     </Grid>
 </Window>

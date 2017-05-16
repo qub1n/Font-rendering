@@ -46,10 +46,13 @@ namespace FontRendererWPF
 
         private void LoadFont(Typeface typeface, double fontSize, string text)
         {
-            var bitmap = FontRendering.RenderBitMap(9, typeface, fontSize, text);
-            canvas.Source = bitmap;
+            //var bitmap = FontRendering.RenderBitMap(9, typeface, fontSize, text);
+            var image = FontRendering.CreateImage(9, typeface, fontSize, text);
 
-            FontRendering.SaveImageToFile(imagePath, bitmap);            
+            canvas.Source = image;
+
+            //FontRendering.SaveImageToFile(imagePath, bitmap);            
+            FontRendering.SaveToFile(imagePath, image);
         }
         
         
