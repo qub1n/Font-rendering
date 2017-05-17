@@ -2,15 +2,22 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="clr-namespace:FontRendererWPF"
-        Title="Font Rasterization" Height="350" Width="525">
+        Title="Font Rasterization" Height="459" Width="591" Icon="pack://siteoforigin:,,,/Resources/AppIcon.ico" WindowState="Maximized">
     <Grid>
-        <Label Content="Text" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.219,0.5"/>
-        <TextBox x:Name="textboxText" Margin="76,10,0,0" TextWrapping="Wrap" Text="AaBbCcDdEeFfGg?Příliš žluťoučký kůň úpěl ďábelské ódy." VerticalAlignment="Top" TextChanged="textboxText_TextChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="35,44,0,0" TextWrapping="Wrap" Text="Font" VerticalAlignment="Top" RenderTransformOrigin="1.11,1.692"/>
-        <Button x:Name="buttonChangeFont" Content="Change Font" HorizontalAlignment="Left" Margin="90,41,0,0" VerticalAlignment="Top" Width="74" Click="buttonChangeFont_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="463*"/>
+            <ColumnDefinition Width="120*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Text" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.625,0.462"/>
+        <TextBox x:Name="textboxText" Margin="76,10,0,0" TextWrapping="Wrap" Text="0123456789 &#xD;&#xA;AaBbCcDdEeFfGg?&#xD;&#xA;Příliš žluťoučký kůň úpěl ďábelské ódy." VerticalAlignment="Top" TextChanged="textboxText_TextChanged" Height="66" AcceptsReturn="True" Grid.ColumnSpan="2"/>
+        <Button x:Name="buttonChangeFont" Content="Change Font" HorizontalAlignment="Left" Margin="76,83,0,0" VerticalAlignment="Top" Width="74" Click="buttonChangeFont_Click" RenderTransformOrigin="-5.257,0.591"/>
 
-        <controls:ImageCanvas x:Name="canvasNormal" TextOptions.TextRenderingMode="Aliased" Margin="10,83,7,154" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"/>
-        <controls:ImageCanvas x:Name="canvasBig" TextOptions.TextRenderingMode="Aliased" Margin="7,171,10,10" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}"/>
+        <controls:ImageCanvas x:Name="canvasNormal" TextOptions.TextRenderingMode="Aliased" Margin="10,143,7,225" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Grid.ColumnSpan="2"/>
+        <controls:ImageCanvas x:Name="canvasBig" TextOptions.TextRenderingMode="Aliased" Margin="7,209,10,10" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Grid.ColumnSpan="2"/>
+        <Label x:Name="labelZoom" Content="Zoom" HorizontalAlignment="Left" Margin="27,112,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.415,-0.5"/>
+        <Slider x:Name="slider" Margin="168,112,10,0" VerticalAlignment="Top" Minimum="5" Maximum="30" Value="20" ValueChanged="Slider_ValueChanged" Grid.ColumnSpan="2"/>
+        <Label Content="Font" HorizontalAlignment="Left" Margin="27,81,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.625,0.462"/>
+        <Label x:Name="fontName" Content="fontName" Margin="168,81,10,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

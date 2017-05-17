@@ -48,11 +48,27 @@ namespace FontRendererWPF
             dc.PushTransform(scaleTransform);
 
             RenderOptions.SetEdgeMode(_source, EdgeMode.Unspecified);
-            RenderOptions.SetBitmapScalingMode(_source, BitmapScalingMode.NearestNeighbor);            
+            RenderOptions.SetBitmapScalingMode(_source, BitmapScalingMode.NearestNeighbor);
+
+            int w = (int)(_source.Width * Zoom);
+            int h = (int)(Source.Height * Zoom);
 
             dc.DrawImage(_source, new Rect(0, 0, _source.Width, _source.Height));
 
             dc.Pop();
+
+            if(Zoom > 1)
+            {
+                for (int i = 0; i < w; i+=Zoom)
+                {
+                    dc.DrawLine(new Pen(Brushes.White, 1), new Point(i, 0), new Point(i, h));
+                }
+
+                for (int j = 0; j < h; j += Zoom)
+                {
+                    dc.DrawLine(new Pen(Brushes.White, 1), new Point(0,j), new Point(w, j));
+                }
+            }
         }
     }
 }
