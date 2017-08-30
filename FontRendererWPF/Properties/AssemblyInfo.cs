@@ -8,9 +8,9 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("FontRendererWPF")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Application for viewving font details in particular size renderred to the Pixel grid")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Tomas Kubes, BTL")]
 [assembly: AssemblyProduct("FontRendererWPF")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]

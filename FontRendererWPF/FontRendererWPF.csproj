@@ -49,8 +49,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WpfColorFontDialog, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WpfColorFontDialog.1.0.2\lib\WpfColorFontDialog.dll</HintPath>
+    <Reference Include="WpfColorFontDialog, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfColorFontDialog.1.0.5\lib\WpfColorFontDialog.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -91,6 +91,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
