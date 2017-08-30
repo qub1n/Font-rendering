@@ -1,0 +1,10 @@
+﻿<Window x:Class="FontRendererWPF.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="About" Height="208" Width="300">
+    <Grid Margin="0,0,2,23" HorizontalAlignment="Center" Width="290">
+        <Label Content="Created by Tomas Kubes, BTL" HorizontalAlignment="Center" Margin="26,29,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="WindowAbout" Content="Go to GitHub" HorizontalAlignment="Center" Margin="109,124,106,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.52,1.1" Click="Button_Click"/>
+
+    </Grid>
+</Window>

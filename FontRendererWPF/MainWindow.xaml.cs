@@ -14,9 +14,9 @@ namespace FontRendererWPF
     {
         double fontSize = 14;
 
-        FontInfo font = new FontInfo(new FontFamily("Arial"), 14.0, new FontStyle(), new FontStretch(),  new FontWeight(), new SolidColorBrush(Colors.Black));
+        FontInfo font = new FontInfo(new FontFamily("Arial"), 14.0, new FontStyle(), new FontStretch(), new FontWeight(), new SolidColorBrush(Colors.Black));
         string imagePath = "image.png";
-        
+
 
         public MainWindow()
         {
@@ -85,7 +85,7 @@ namespace FontRendererWPF
             DrawingImage image = FontRendering.CreateImage(9, typeface, fontSize, text);
 
             canvasNormal.Source = image;
-                       
+
             FontRendering.SaveToFile(imagePath, image);
 
             var bitmap = new BitmapImage();
@@ -112,6 +112,12 @@ namespace FontRendererWPF
             labelZoom.Content = "Zoom " + (int)e.NewValue + "x";
 
             RefreshFont();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 about = new Window1();
+            about.ShowDialog();
         }
     }
 }
