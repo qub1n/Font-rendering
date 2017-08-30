@@ -31,7 +31,7 @@ namespace FontRendererWPF
         //    TextOptions.SetTextFormattingMode(drawing_visual, TextFormattingMode.Display);
         //    TextOptions.SetTextRenderingMode(bm, TextRenderingMode.Grayscale);
         //    TextOptions.SetTextFormattingMode(bm, TextFormattingMode.Display);
-            
+
 
         //    DrawingContext drawing_context = drawing_visual.RenderOpen();
 
@@ -67,7 +67,7 @@ namespace FontRendererWPF
         //    }
         //}
 
-        public static void SaveToFile(string filePath, DrawingImage drawing)
+        public static void SaveTo(Stream stream, DrawingImage drawing)
         {
             if (drawing.Width <= 1 || drawing.Height < 1)
                 return;
@@ -83,12 +83,10 @@ namespace FontRendererWPF
             var bitmap = new RenderTargetBitmap((int)drawing.Width, (int)drawing.Height, 96, 96, PixelFormats.Pbgra32);
             bitmap.Render(image);
 
-            using (var fileStream = new FileStream(filePath, FileMode.Create))
-            {
-                var encoder = new PngBitmapEncoder();
-                encoder.Frames.Add(BitmapFrame.Create(bitmap));
-                encoder.Save(fileStream);
-            }
-        }      
+
+            var encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(bitmap));
+            encoder.Save(stream);
+        }
     }
 }
